@@ -17,6 +17,6 @@ dependencies: []
 ansigenome_info:
   github_url: "https://github.com/ypid/ansible-vnstat"
   git_branch: "master"
-  # galaxy_id: "2980"
+  galaxy_id: "3315"
 
   travis: True
