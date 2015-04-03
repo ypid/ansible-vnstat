@@ -1,0 +1,4 @@
+---
+
+vnstat_config_options_integer:
+  MaxBandwidth: 0

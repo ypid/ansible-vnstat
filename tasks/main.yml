@@ -1,0 +1,18 @@
+---
+
+- name: Install vnstat
+  apt:
+    name: "{{ item }}"
+    state: "latest"
+    install_recommends: False
+  with_items:
+    - vnstat
+
+- name: Configure vnstat defaults
+  lineinfile:
+    dest: "/etc/vnstat.conf"
+    regexp: '^{{ item.key }}'
+    line: '{{ item.key }} {{ item.value }}'
+  when: item.value is defined and item.value > -1
+  with_dict: vnstat_config_options_integer
+  notify: [ 'Reload vnstat' ]
