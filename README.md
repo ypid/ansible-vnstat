@@ -28,6 +28,9 @@ List of default variables available in the inventory:
     
     vnstat_config_options_integer:
       MaxBandwidth: 0
+    
+    vnstat_group_config_options_integer: {}
+    vnstat_host_config_options_integer: {}
 
 
 
