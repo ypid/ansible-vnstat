@@ -1,7 +1,19 @@
 ---
 
-vnstat_config_options_integer:
-  MaxBandwidth: 0
+## Check `man vnstat.conf` for details.
 
-vnstat_group_config_options_integer: {}
-vnstat_host_config_options_integer: {}
+## "Global" vnStat configuration variables.
+vnstat_config_options:
+  MaxBandwidth: 0
+  # RXHourCharacter: R
+
+## "Host group" vnStat configuration variables.
+vnstat_group_config_options: {}
+
+## "Host" vnStat configuration variables.
+vnstat_host_config_options: {}
+
+
+vnstat_packages:
+  - 'vnstat'
+  # - 'vnstati'

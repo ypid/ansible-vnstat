@@ -2,7 +2,7 @@
 
 galaxy_info:
   author: Robin Schneider
-  description: Configure vnstat
+  description: Configure the network traffic monitor vnStat.
   platforms:
   - name: Debian
     versions:
@@ -20,3 +20,7 @@ ansigenome_info:
   galaxy_id: "3315"
 
   travis: True
+
+  synopsis: |
+    This role lets the default settings of vnStat chosen by your Distribution
+    intact and allows you to make adjustments as needed.

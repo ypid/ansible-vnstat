@@ -1,36 +1,30 @@
 ---
 
-- name: Install vnstat
+- name: Combine vnStat configuration inventory variables
+  set_fact:
+    vnstat_config_options: '{{ vnstat_config_options|hash_merge(vnstat_group_config_options)|hash_merge(vnstat_host_config_options) | default({}) }}'
+
+- name: Install vnStat
   apt:
-    name: "{{ item }}"
-    state: "latest"
+    name: '{{ item }}'
+    state: 'latest'
     install_recommends: False
-  with_items:
-    - vnstat
+  with_items: vnstat_packages
 
-- name: Configure vnstat defaults
+- name: Configure vnStat number options
   lineinfile:
-    dest: "/etc/vnstat.conf"
+    dest: '/etc/vnstat.conf'
     regexp: '^{{ item.key }}'
     line: '{{ item.key }} {{ item.value }}'
-  when: item.value is defined and item.value > -1
-  with_dict: vnstat_config_options_integer
+  when: item.value is number
+  with_dict: vnstat_config_options
   notify: [ 'Reload vnstat' ]
 
-- name: Configure vnstat defaults
+- name: Configure vnStat string options
   lineinfile:
-    dest: "/etc/vnstat.conf"
+    dest: '/etc/vnstat.conf'
     regexp: '^{{ item.key }}'
-    line: '{{ item.key }} {{ item.value }}'
-  when: item.value is defined and item.value > -1
-  with_dict: vnstat_group_config_options_integer
-  notify: [ 'Reload vnstat' ]
-
-- name: Configure vnstat defaults
-  lineinfile:
-    dest: "/etc/vnstat.conf"
-    regexp: '^{{ item.key }}'
-    line: '{{ item.key }} {{ item.value }}'
-  when: item.value is defined and item.value > -1
-  with_dict: vnstat_host_config_options_integer
+    line: '{{ item.key }} "{{ item.value }}"'
+  when: item.value is string
+  with_dict: vnstat_config_options
   notify: [ 'Reload vnstat' ]

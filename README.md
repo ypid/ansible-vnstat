@@ -5,6 +5,10 @@
 [![Platforms](http://img.shields.io/badge/platforms-debian%20/%20ubuntu-lightgrey.svg?style=flat)](#)
 
 
+Configure the network traffic monitor vnStat.
+
+This role lets the default settings of vnStat chosen by your Distribution
+intact and allows you to make adjustments as needed.
 
 ### Installation
 
@@ -14,8 +18,8 @@ This role requires at least Ansible `v1.3`. To install it, run:
 
 To install via git, run either:
 
-    git clone https://github.com/ypid/ansible-vnstat ypid.vnstat
-    git submodule add https://github.com/ypid/ansible-vnstat roles/ypid.vnstat
+    git clone https://github.com/ypid/ansible-vnstat.git ypid.vnstat
+    git submodule add https://github.com/ypid/ansible-vnstat.git ypid.vnstat
 
 
 
@@ -26,13 +30,27 @@ List of default variables available in the inventory:
 
     ---
     
-    vnstat_config_options_integer:
-      MaxBandwidth: 0
+    ## Check `man vnstat.conf` for details.
     
-    vnstat_group_config_options_integer: {}
-    vnstat_host_config_options_integer: {}
+    ## "Global" vnStat configuration variables.
+    vnstat_config_options:
+      MaxBandwidth: 0
+      # RXHourCharacter: R
+    
+    ## "Host group" vnStat configuration variables.
+    vnstat_group_config_options: {}
+    
+    ## "Host" vnStat configuration variables.
+    vnstat_host_config_options: {}
+    
+    
+    vnstat_packages:
+      - 'vnstat'
+      # - 'vnstati'
 
+List of internal variables used by the role:
 
+    vnstat_config_options
 
 
 ### Authors and license
