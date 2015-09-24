@@ -11,6 +11,16 @@
     install_recommends: False
   with_items: vnstat_packages
 
+- name: Divert original /etc/vnstat.conf
+  command: dpkg-divert --quiet --local --divert /etc/vnstat.conf.dpkg-divert --rename /etc/vnstat.conf
+  args:
+    creates: '/etc/vnstat.conf.dpkg-divert'
+
+- name: Provide original /etc/vnstat.conf
+  command: cp /etc/vnstat.conf.dpkg-divert /etc/vnstat.conf
+  args:
+    creates: '/etc/vnstat.conf'
+
 - name: Configure vnStat number options
   lineinfile:
     dest: '/etc/vnstat.conf'
