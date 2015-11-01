@@ -1,26 +1,27 @@
 ---
 
-galaxy_info:
-  author: Robin Schneider
-  description: Configure the network traffic monitor vnStat.
-  platforms:
-  - name: Debian
-    versions:
-    - all
-  - name: Ubuntu
-    versions:
-    - all
-  categories:
-    - system
-  min_ansible_version: 1.3
 dependencies: []
-ansigenome_info:
-  github_url: "https://github.com/ypid/ansible-vnstat"
-  git_branch: "master"
-  galaxy_id: "3315"
 
-  travis: True
+galaxy_info:
 
-  synopsis: |
-    This role lets the default settings of vnStat chosen by your Distribution
-    intact and allows you to make adjustments as needed.
+  author: 'Robin Schneider'
+  description: Configure the network traffic monitor vnStat.
+  license: 'GNU Affero General Public License v3'
+  min_ansible_version: '1.3'
+
+  platforms:
+
+    - name: Debian
+      versions:
+        - all
+
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags:
+    - system
+    - monitoring
+    - network
+    - vnstat
+    - traffic

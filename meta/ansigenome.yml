@@ -1,0 +1,19 @@
+---
+
+ansigenome_info:
+  github_url: 'https://github.com/ypid/ansible-vnstat'
+  git_branch: 'master'
+  galaxy_id: '3315'
+
+  travis: True
+
+  authors:
+    - name: 'Robin Schneider'
+      url: 'http://ypid.de/'
+      email: 'ypid@riseup.net'
+      twitter: 'ypid'
+      github: 'ypid'
+
+  synopsis: |
+    This role lets the default settings of vnStat chosen by your Distribution
+    intact and allows you to make adjustments as needed.

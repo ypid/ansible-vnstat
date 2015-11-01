@@ -2,7 +2,7 @@
 
 - name: Combine vnStat configuration inventory variables
   set_fact:
-    vnstat_config_options: '{{ vnstat_config_options|hash_merge(vnstat_group_config_options)|hash_merge(vnstat_host_config_options) | default({}) }}'
+    vnstat_config_options: '{{ vnstat_config_options|combine(vnstat_group_config_options,vnstat_host_config_options) | default({}) }}'
 
 - name: Install vnStat
   apt:
