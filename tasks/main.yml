@@ -9,7 +9,7 @@
     name: '{{ item }}'
     state: 'latest'
     install_recommends: False
-  with_items: vnstat_packages
+  with_items: '{{ vnstat_packages }}'
 
 - name: Divert original /etc/vnstat.conf
   command: dpkg-divert --quiet --local --divert /etc/vnstat.conf.dpkg-divert --rename /etc/vnstat.conf
@@ -27,7 +27,7 @@
     regexp: '^{{ item.key }}'
     line: '{{ item.key }} {{ item.value }}'
   when: item.value is number
-  with_dict: vnstat_config_options
+  with_dict: '{{ vnstat_config_options }}'
   notify: [ 'Reload vnstat' ]
 
 - name: Configure vnStat string options
@@ -36,5 +36,5 @@
     regexp: '^{{ item.key }}'
     line: '{{ item.key }} "{{ item.value }}"'
   when: item.value is string
-  with_dict: vnstat_config_options
+  with_dict: '{{ vnstat_config_options }}'
   notify: [ 'Reload vnstat' ]
