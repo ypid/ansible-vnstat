@@ -17,3 +17,10 @@ vnstat_host_config_options: {}
 vnstat_packages:
   - 'vnstat'
   # - 'vnstati'
+
+vnstat_user: 'vnstat'
+vnstat_group: 'vnstat'
+
+vnstat_interfaces: []
+vnstat_group_interfaces: []
+vnstat_host_interfaces: []

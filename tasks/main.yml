@@ -38,3 +38,13 @@
   when: item.value is string
   with_dict: '{{ vnstat_config_options }}'
   notify: [ 'Reload vnstat' ]
+
+- name: Initiate vnstat interfaces databases
+  command: vnstat --update --iface '{{ item | quote }}'
+  args:
+    creates: '/var/lib/vnstat/{{ item }}'
+  become: '{{ vnstat_user }}'
+  with_flattened:
+    - '{{ vnstat_interfaces }}'
+    - '{{ vnstat_group_interfaces }}'
+    - '{{ vnstat_host_interfaces }}'
