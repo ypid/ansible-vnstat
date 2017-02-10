@@ -1,26 +1,72 @@
 ---
+# .. vim: foldmarker=[[[,]]]:foldmethod=marker
 
-## Check `man vnstat.conf` for details.
+# ypid.vnstat default variables [[[
+# =================================
 
-## "Global" vnStat configuration variables.
+# .. contents:: Sections
+#    :local:
+#
+# .. include:: includes/all.rst
+
+
+# Check :manpage:`vnstat.conf(5)` for details.
+
+# .. envvar:: vnstat_config_options [[[
+#
+# "Global" vnStat configuration variables.
 vnstat_config_options:
   MaxBandwidth: 0
   # RXHourCharacter: R
 
-## "Host group" vnStat configuration variables.
+                                                                   # ]]]
+# .. envvar:: vnstat_group_config_options [[[
+#
+# "Host group" vnStat configuration variables.
 vnstat_group_config_options: {}
 
-## "Host" vnStat configuration variables.
+                                                                   # ]]]
+# .. envvar:: vnstat_host_config_options [[[
+#
+# "Host" vnStat configuration variables.
 vnstat_host_config_options: {}
 
-
+                                                                   # ]]]
+# .. envvar:: vnstat_packages [[[
+#
+# FIXME(yaml4rst): Describe what this variable is doing.
 vnstat_packages:
   - 'vnstat'
   # - 'vnstati'
 
+                                                                   # ]]]
+# .. envvar:: vnstat_user [[[
+#
+# FIXME(yaml4rst): Describe what this variable is doing.
 vnstat_user: 'vnstat'
+
+                                                                   # ]]]
+# .. envvar:: vnstat_group [[[
+#
+# FIXME(yaml4rst): Describe what this variable is doing.
 vnstat_group: 'vnstat'
 
+                                                                   # ]]]
+# .. envvar:: vnstat_interfaces [[[
+#
+# FIXME(yaml4rst): Describe what this variable is doing.
 vnstat_interfaces: []
+
+                                                                   # ]]]
+# .. envvar:: vnstat_group_interfaces [[[
+#
+# FIXME(yaml4rst): Describe what this variable is doing.
 vnstat_group_interfaces: []
+
+                                                                   # ]]]
+# .. envvar:: vnstat_host_interfaces [[[
+#
+# FIXME(yaml4rst): Describe what this variable is doing.
 vnstat_host_interfaces: []
+                                                                   # ]]]
+                                                                   # ]]]
