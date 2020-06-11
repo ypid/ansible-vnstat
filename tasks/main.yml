@@ -1,5 +1,8 @@
 ---
 
+- import_role:
+    name: 'ansible_plugins'
+
 - name: Combine vnStat configuration inventory variables
   set_fact:
     vnstat_config_options: '{{ vnstat_config_options|combine(vnstat_group_config_options,vnstat_host_config_options) | default({}) }}'
@@ -11,10 +14,10 @@
     install_recommends: False
   with_items: '{{ vnstat_packages }}'
 
-- name: Divert original /etc/vnstat.conf
-  command: dpkg-divert --quiet --local --divert /etc/vnstat.conf.dpkg-divert --rename /etc/vnstat.conf
-  args:
-    creates: '/etc/vnstat.conf.dpkg-divert'
+- name: Divert the original vnstat.conf configuration
+  dpkg_divert:
+    path: '/etc/vnstat.conf'
+    state: 'present'
 
 - name: Provide original /etc/vnstat.conf
   command: cp /etc/vnstat.conf.dpkg-divert /etc/vnstat.conf
